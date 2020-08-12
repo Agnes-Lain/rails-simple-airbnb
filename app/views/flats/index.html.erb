@@ -1,26 +1,32 @@
 <%= render "navbar" %>
 
-<h1>All our flats</h1>
-<p>All <%= @flats.size %> flats.</p>
+<div class="container">
 
-    <div class="d-flex flex-row justify-content-around p-2 bd-highlight">
-      <% @flats.each do |flat| %>
-      <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"><%= flat.name %></h5>
-          <p class="card-text"><%= flat.address %></p>
-        </div>
-        <ul class="list-group list-group-horizontal-sm">
-          <li class="list-group-item"><%= flat.number_of_guests %></li>
-          <li class="list-group-item"><%= flat.price_per_night %></li>
-        </ul>
-        <div class="card-body">
-          <%= link_to "More info", flat_path(flat), class:"card-link" %>
-          <a href="#" class="card-link">Another link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
+  <h1>All our flats</h1>
+  <p>All <%= @flats.size %> flats.</p>
+
+  <div class="d-flex flex-row justify-content-around p-2 bd-highlight">
+    <% @flats.each do |flat| %>
+    <div class="card" style="width: 18rem;">
+      <img src=<%= flat.image_url %> class="card-img-top" alt="flat_image">
+      <div class="card-body">
+        <h5 class="card-title"><%= flat.name %></h5>
+        <p class="card-text"><%= flat.address %></p>
       </div>
-    <% end %>
+      <ul class="list-group list-group-horizontal-sm">
+        <li class="list-group-item"><%= flat.number_of_guests %> <i class="fas fa-user-friends"></i></li>
+        <li class="list-group-item"><%= flat.price_per_night %> <i class="fas fa-euro-sign"></i></li>
+      </ul>
+      <div class="card-body d-flex flex-row">
+        <%= link_to "More info", flat_path(flat), class:"card-link" %>
+        <%= link_to "Edit", edit_flat_path(flat), class:"card-link text-warning" %>
+        <%= link_to "Remove", flat_path(flat), method: :delete, data: { confirm: "Are you sure?" },class:"card-link text-danger" %>
+      </div>
     </div>
+  <% end %>
+  </div>
+
+</div>
+
+
 

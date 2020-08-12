@@ -1,0 +1,13 @@
+  <div class="card w-75 p-3">
+    <h2>Add a new Flat</h2>
+    <%= simple_form_for(@flat) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :image_url %>
+    <%= f.input :description %>
+    <%= f.input :number_of_guests %>
+    <%= f.input :price_per_night %>
+    <%= f.submit class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
