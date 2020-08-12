@@ -1,0 +1,26 @@
+<%= render "navbar" %>
+
+<h1>All our flats</h1>
+<p>All <%= @flats.size %> flats.</p>
+
+    <div class="d-flex flex-row justify-content-around p-2 bd-highlight">
+      <% @flats.each do |flat| %>
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= flat.name %></h5>
+          <p class="card-text"><%= flat.address %></p>
+        </div>
+        <ul class="list-group list-group-horizontal-sm">
+          <li class="list-group-item"><%= flat.number_of_guests %></li>
+          <li class="list-group-item"><%= flat.price_per_night %></li>
+        </ul>
+        <div class="card-body">
+          <%= link_to "More info", flat_path(flat), class:"card-link" %>
+          <a href="#" class="card-link">Another link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
